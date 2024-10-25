@@ -12,7 +12,11 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Vite tarafından build edilen dosyaları sunmak için bir statik sunucuya gerek yok
-# Ancak Vite'ın yerleşik sunucusunu kullanmak için
-EXPOSE 5173
-CMD ["npm", "run", "preview"]
+# Ortam değişkeni olarak Cloud Run'dan gelen PORT değerini kullan
+ENV PORT=8080
+
+# Uygulamanın bu portta dinlemesi gerektiğini bildir
+EXPOSE 8080
+
+# Vite'ın preview komutu ile build edilen dosyaları sun, ve PORT'u kullan
+CMD ["npm", "run", "preview", "--", "--port", "8080", "--host"]

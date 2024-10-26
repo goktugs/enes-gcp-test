@@ -7,10 +7,12 @@ function App() {
   const [count, setCount] = useState(0);
 
   const handleFetch = () => {
-    fetch("https://api.budgety.ai/", {
+    fetch("https://api.budgety.ai/api/files", {
+      method: "GET",
       headers: {
+        accept: "application/json",
         Authorization:
-          "Bearer yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzMwMDc4ODIxfQ.Pn_cs1o-QyLATQ0QNNU2WSWLIWSEaGma-mDk1lZPXVk",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZXhwIjoxNzMwMTE2NDgwfQ.PacZIN0k66RuXycv9l7Er99aRBxVpqvGXAxe518n3Vg",
       },
     })
       .then((response) => {
